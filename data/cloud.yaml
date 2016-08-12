@@ -1,0 +1,49 @@
+general:
+  type: virtual
+
+host:
+  os: opensuse
+  virtualization: libvirt
+  switch: openvswitch
+  network: default
+  storage: default
+
+nodes:
+  - name: "admin"
+      role: admin
+      ram: 2000000
+      vcpus: 2
+      bootloader: "bios"
+      hdd:  30
+  - name: "controller"
+      role: controller
+      ram: 2000000
+      vcpus: 2
+      bootloader: "bios"
+      hdd: 30
+      has_storage: "true"
+      has_network: "true"
+      ha_enabled: "false"
+  - name: "compute"
+      role: compute
+      ram: 2000000
+      vcpus: 2
+      bootloader: "bios"
+      hdd: 30
+      ha_enabled: "false"
+      
+proposals:
+    - rabbitmq
+    - database
+    - dns
+    - provisioner
+    - network
+    - keystone
+    - nova
+    - neutron
+    - glance
+    - cinder
+    - tempest
+    - ceilometer
+    - horizon
+
